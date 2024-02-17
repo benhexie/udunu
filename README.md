@@ -44,6 +44,6 @@ We would like to thank all the contributors who have helped shape Udunu into wha
 
 ## Contact
 
-For any inquiries or support, please contact us at [contact@example.com](mailto:contact@example.com).
+For any inquiries or support, please contact us at [Benedict Gabriel](mailto:benedictgabriel73@gmail.com).
 
 Happy coding!
