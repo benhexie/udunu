@@ -1,0 +1,30 @@
+.dashboard__panel {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard__panel__header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 8px;
+    color: #a3a3a3;
+    background-color: #1f1f1f;
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+}
+
+.dashboard__panel__header span {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.dashboard__panel__header span:hover {
+    color: #fff;
+}
+
+.dashboard__panel__header span.active {
+    font-weight: 600;
+    color: #fff;
+}
