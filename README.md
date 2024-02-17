@@ -34,7 +34,7 @@ Join the conversation! We encourage discussions on new features, bug reports, an
 
 ## License
 
-Udunu is licensed under the [MIT License](LICENSE).
+Udunu is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](LICENSE).
 
 ## Acknowledgements
 
