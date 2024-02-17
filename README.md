@@ -1,3 +1,5 @@
+<img src="./public/banner.png" />
+
 # Udunu
 
 Udunu is an open-source desktop application that empowers users to build stunning websites and powerful single-page applications (SPAs) with ease. It serves as an alternative to proprietary solutions like Webflow, providing a user-friendly interface coupled with robust functionality.
