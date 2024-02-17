@@ -56,7 +56,7 @@
 }
 
 .projects__nav__item--logo {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .projects__nav__item img {
@@ -199,6 +199,7 @@
   color: white;
   outline: none;
   font-size: 1em;
+  font-weight: 500;
 }
 
 .projects__frameworks {
