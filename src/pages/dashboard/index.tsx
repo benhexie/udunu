@@ -1,24 +1,13 @@
 import "./Dashboard.css";
 import "./Controls.css";
 import "./Preview.css";
-import { useNavigate } from "react-router-dom";
-import { IoLogoWordpress } from "react-icons/io5";
-import {
-  BsFillPlusSquareFill,
-  BsLayersFill,
-  BsFillImageFill,
-  BsDatabaseFill,
-  BsGearFill,
-  BsTablet,
-} from "react-icons/bs";
-import { GrPersonalComputer } from "react-icons/gr";
-import { AiOutlineMobile } from "react-icons/ai";
 import LeftPanel from "./Panels/LeftPanel";
 import RightPanel from "./Panels/RightPanel";
 import { useEffect, useState } from "react";
+import LeftNav from "./Navs/LeftNav";
+import TopNav from "./Navs/TopNav";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
   const [showPanels, setShowPanels] = useState(true);
 
   useEffect(() => {
@@ -36,42 +25,9 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <nav className="dashboard__nav left">
-        <ul>
-          <li onClick={() => navigate("/projects")}>
-            <IoLogoWordpress />
-          </li>
-          <li>
-            <BsFillPlusSquareFill />
-          </li>
-          <li>
-            <BsLayersFill />
-          </li>
-          <li>
-            <BsFillImageFill />
-          </li>
-          <li>
-            <BsDatabaseFill />
-          </li>
-          <li>
-            <BsGearFill />
-          </li>
-        </ul>
-      </nav>
+      <LeftNav />
       <div className="dashboard__content">
-        <nav className="dashboard__nav top">
-          <ul className="dashboard__screens">
-            <li>
-              <GrPersonalComputer />
-            </li>
-            <li>
-              <BsTablet />
-            </li>
-            <li>
-              <AiOutlineMobile />
-            </li>
-          </ul>
-        </nav>
+        <TopNav />
         <main className="dashboard__main">
           <LeftPanel showPanels={showPanels} />
           <div className="dashboard__preview"></div>

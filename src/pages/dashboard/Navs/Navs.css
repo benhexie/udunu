@@ -1,0 +1,30 @@
+.dashboard__nav {
+  display: flex;
+  border: solid 0 #000;
+  position: relative;
+  z-index: 10;
+}
+.dashboard__nav ul {
+  display: inherit;
+  flex-direction: inherit;
+}
+
+.dashboard__nav li {
+  cursor: pointer;
+  color: #fff;
+  pointer-events: all;
+  display: flex;
+}
+
+.dashboard__nav li a {
+  padding: 8px;
+  transition: background-color 0.3s;
+}
+
+.dashboard__nav li a.active {
+  background-color: #000;
+}
+
+.dashboard__nav li:hover a {
+  background-color: #000;
+}

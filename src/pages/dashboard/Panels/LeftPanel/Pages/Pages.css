@@ -1,0 +1,39 @@
+.dashboard__panel__content.pages div {
+}
+
+.directory .tree,
+.directory .tree-node,
+.directory .tree-node-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.directory .tree-branch-wrapper,
+.directory .tree-node__leaf {
+  outline: none;
+}
+
+.directory .tree-node {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+}
+
+.directory .tree-node:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.directory .tree .tree-node--focused {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.directory .tree .tree-node--selected {
+  background: rgba(48, 107, 176);
+}
+
+.directory .icon {
+  vertical-align: middle;
+  padding-right: 5px;
+  margin-left: 8px;
+}

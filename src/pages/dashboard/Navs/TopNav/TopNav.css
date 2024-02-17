@@ -1,0 +1,30 @@
+.dashboard__nav.top {
+  flex-direction: row;
+  height: 36px;
+  border-bottom-width: 1px;
+}
+
+.dashboard__nav.top li {
+  height: 100%;
+  border-right: 1px solid #000;
+}
+
+.dashboard__nav.top li a {
+  padding-inline: 12px;
+  height: 100%;
+}
+
+.dashboard__nav.top li:first-child {
+  border-left: 1px solid #000;
+}
+
+.dashboard__screens {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}

@@ -1,0 +1,15 @@
+.dashboard__nav.left {
+  flex-direction: column;
+  width: 36px;
+  border-right-width: 1px;
+}
+
+.dashboard__nav.left li {
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.dashboard__nav.left li a {
+  padding-block: 12px;
+  flex: 1;
+}

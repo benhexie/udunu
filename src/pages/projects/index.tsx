@@ -1,10 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./Projects.css";
+import { NavLink } from "react-router-dom";
 
 const Projects = () => {
-  const navigate = useNavigate();
+  const { search } = useLocation();
 
-  return <div onClick={() => navigate("/projects/1")}>Projects</div>;
+  return (
+    <NavLink to={{ pathname: "/projects/1", search }} end>
+      Projects
+    </NavLink>
+  );
 };
 
 export default Projects;

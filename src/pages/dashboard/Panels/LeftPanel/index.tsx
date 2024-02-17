@@ -1,37 +1,24 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import "../Panels.css";
-import Pages from "./Pages";
-import Controls from "./Controls";
+import "./LeftPanel.css";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 
 const LeftPanel = ({ showPanels }: { showPanels: boolean }) => {
-  const [page, setPage] = useState("pages");
-
+  const { search } = useLocation();
+  const { id } = useParams();
   return (
     <Fragment>
       {showPanels && (
         <div className="dashboard__panel left">
           <header className="dashboard__panel__header dashboard__panel__nav">
-            <span
-              onClick={() => setPage("pages")}
-              className={page === "pages" ? "active" : ""}
-            >
+            <NavLink to={{ pathname: `/projects/${id}`, search }} end>
               Pages
-            </span>
-            <span
-              onClick={() => setPage("controls")}
-              className={page === "controls" ? "active" : ""}
-            >
+            </NavLink>
+            <NavLink to={{ pathname: `/projects/${id}/controls`, search }}>
               Controls
-            </span>
+            </NavLink>
           </header>
-          {(() => {
-            switch (page) {
-              case "controls":
-                return <Controls />;
-              default:
-                return <Pages />;
-            }
-          })()}
+          <Outlet />
         </div>
       )}
     </Fragment>
