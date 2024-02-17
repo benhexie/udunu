@@ -1,4 +1,3 @@
-import { BsWordpress } from "react-icons/bs";
 import "./Intro.css";
 import BackgroundStarsAnimation from "../../components/ui/background-stars-animation";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,7 +15,7 @@ const Intro = () => {
         <div className="intro__logo__container">
           <BackgroundStarsAnimation />
           <h1>Udunu</h1>
-          <BsWordpress />
+          <img src="/logo.svg" alt="Udunu Logo" className="intro__logo" />
         </div>
         <h3>Welcome to Udunu - Your Open-Source Web Design Tool</h3>
         <p>

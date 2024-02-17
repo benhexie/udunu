@@ -2,13 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  justify-content: center;
   width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
 }
 
 .intro__container {
   max-width: 800px;
   min-height: 600px;
+  height: auto;
   display: inherit;
   flex-direction: inherit;
   align-items: inherit;
@@ -20,7 +23,7 @@
   }
 }
 
-.intro :is(h1, p, h3, h4, ul, footer) {
+.intro :is(h3, h4, p, ul, footer) {
   padding: 0 20px;
 }
 
@@ -37,6 +40,24 @@
 
 .intro__logo__container *:not(.background__stars__animation) {
   z-index: 1;
+}
+
+.intro__logo {
+  width: 60px;
+  height: 60px;
+  animation: rotate 5s alternate infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(-180deg);
+  }
+  90% {
+    transform: rotateY(0deg);
+  }
 }
 
 .intro__logo__container h1 {
@@ -71,7 +92,6 @@
 }
 
 .intro button {
-  background-color: #007bff;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -81,10 +101,11 @@
   transition: background-color 0.3s;
   height: 60px;
   width: calc(100% - 40px);
+  background-color: var(--primary-color);
 }
 
 .intro button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-color-dark);
 }
 
 .intro footer {

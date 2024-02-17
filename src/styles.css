@@ -6,12 +6,16 @@
 
   color: #0f0f0f;
   background-color: #f6f6f6;
+  --background-color-dark: #111;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --primary-color: #a88f81;
+  --primary-color-dark: #7a6a5f;
 }
 
 * {
