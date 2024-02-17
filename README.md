@@ -1,4 +1,4 @@
-<img src="./public/banner.png" />
+<img src="./public/banner.svg" width="100%" />
 
 # Udunu
 
