@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./Projects.css";
 import ReactIcon from "../../assets/language-icons/react-icon.svg";
 import AngularIcon from "../../assets/language-icons/angular-icon.svg";
@@ -12,11 +12,12 @@ const Projects = () => {
   const navigate = useNavigate();
 
   const frameworkClicked = (framework: string) => {
-    navigate(`/projects/1`);
+    navigate(`/projects/setup/${framework}`);
   };
 
   return (
     <div className="projects">
+      <Outlet />
       <nav className="projects__nav">
         <ul>
           <li className="projects__nav__item projects__nav__item--logo">

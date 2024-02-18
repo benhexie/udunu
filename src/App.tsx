@@ -9,6 +9,7 @@ import Layers from "./pages/dashboard/Panels/LeftPanel/Controls/Layers";
 import Assets from "./pages/dashboard/Panels/LeftPanel/Controls/Assets";
 import Database from "./pages/dashboard/Panels/LeftPanel/Controls/Database";
 import Settings from "./pages/dashboard/Panels/LeftPanel/Controls/Settinggs";
+import SetupOverlay from "./pages/projects/overlay/SetupOverlay";
 
 function App() {
   return (
@@ -16,8 +17,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Intro />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<Dashboard />}>
+          <Route path="/projects" element={<Projects />}>
+            <Route path="setup/:framework" element={<SetupOverlay />} />
+          </Route>
+          <Route path="/project/:id" element={<Dashboard />}>
             <Route index element={<Pages />} />
             <Route path="controls" element={<Controls />}>
               <Route path="layers" element={<Layers />} />

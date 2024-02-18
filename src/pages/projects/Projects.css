@@ -144,6 +144,11 @@
   transition: all 0.3s ease;
 }
 
+.projects__import__label svg {
+  color: #6b6b6b;
+  transition: all 0.3s ease;
+}
+
 .projects__import input[type="file"] {
   display: none;
 }

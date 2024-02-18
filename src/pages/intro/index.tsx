@@ -21,9 +21,9 @@ const Intro = () => {
         <p>
           Udunu is a powerful open-source desktop application that empowers you
           to create stunning single-page applications (SPAs) as well as elegant
-          static websites with ease. Similar to Webflow, Udunu provides a
-          user-friendly interface and a comprehensive set of features to bring
-          your web design ideas to life.
+          static websites with ease. Udunu provides a user-friendly interface
+          and a comprehensive set of features to bring your web design ideas to
+          life.
         </p>
         <h4>Key Features:</h4>
         <ul>
