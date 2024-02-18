@@ -4,6 +4,10 @@
   border-right-width: 1px;
 }
 
+.dashboard__nav.left ul {
+  height: 100%;
+}
+
 .dashboard__nav.left li {
   width: 100%;
   border-bottom: 1px solid #000;
@@ -12,4 +16,11 @@
 .dashboard__nav.left li a {
   padding-block: 12px;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard__nav.left .exit {
+  margin-top: auto;
 }

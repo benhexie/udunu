@@ -7,7 +7,7 @@ import {
   BsGearFill,
   BsLayersFill,
 } from "react-icons/bs";
-import { IoLogoWordpress } from "react-icons/io5";
+import { ImExit } from "react-icons/im";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 
 const LeftNav = () => {
@@ -18,7 +18,7 @@ const LeftNav = () => {
       <ul>
         <li>
           <NavLink to={"/projects"} end>
-            <IoLogoWordpress />
+            <img src="/logo.svg" alt="Udunu Logo" width={20} />
           </NavLink>
         </li>
         <li>
@@ -56,6 +56,11 @@ const LeftNav = () => {
             end
           >
             <BsGearFill />
+          </NavLink>
+        </li>
+        <li className="exit">
+          <NavLink to={"/projects"} end>
+            <ImExit />
           </NavLink>
         </li>
       </ul>

@@ -1,4 +1,30 @@
 .dashboard__preview {
+  position: relative;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: auto;
+}
+
+.dashboard__preview__screen {
   background-color: #fff;
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  scale: 0.7;
+}
+
+.dashboard__preview__screen.tablet {
+  width: 768px;
+  height: 1024px;
+  scale: 0.8;
+}
+
+.dashboard__preview__screen.mobile {
+  width: 375px;
+  height: 667px;
+  scale: 1.2;
 }
