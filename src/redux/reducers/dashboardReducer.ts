@@ -1,36 +1,30 @@
-import { combineReducers } from "@reduxjs/toolkit";
+import { ActionInterface } from "./types/action";
 
-interface DashboardAction {
-  type: string;
-  payload: any;
-}
+let zoomClickedOnce = false;
 
-interface DashboardState {
+interface InitalState {
   screenType: string;
   zoom: number;
   projectPath: string;
-  currentPage: string;
   settings: {
     leftPanelVisibility: boolean;
     rightPanelVisibility: boolean;
   };
 }
 
-const dashboardInitialState: DashboardState = {
+const initialState: InitalState = {
   screenType: "web",
   zoom: 0,
   projectPath: "",
-  currentPage: "",
   settings: {
     leftPanelVisibility: true,
     rightPanelVisibility: true,
   },
 };
 
-let zoomClickedOnce = false;
-const dashboardReducer = (
-  state: DashboardState = dashboardInitialState,
-  action: DashboardAction,
+export const dashboardReducer = (
+  state = initialState,
+  action: ActionInterface,
 ) => {
   switch (action.type) {
     case "SET_SCREEN_TYPE":
@@ -107,7 +101,3 @@ const dashboardReducer = (
       return state;
   }
 };
-
-export const rootReducer = combineReducers({
-  dashboard: dashboardReducer,
-});

@@ -1,0 +1,28 @@
+.gizmo {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 2px;
+  cursor: grab;
+  padding: 2px;
+  transition: all 0.5s ease;
+  background-color: inherit;
+}
+
+.gizmo:not(.disabled):hover {
+  filter: brightness(1.5);
+  transform: scale(1.03);
+  rotate: 3deg;
+}
+
+.gizmo.disabled {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.gizmo div {
+  border: 2px dashed var(--primary-color);
+}

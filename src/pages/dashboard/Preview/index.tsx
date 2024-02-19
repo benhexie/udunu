@@ -2,6 +2,11 @@ import "./Preview.css";
 import { useSelector } from "react-redux";
 import { LegacyRef, useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
+import {
+  Droppable,
+  DroppableProvided,
+  DroppableStateSnapshot,
+} from "react-beautiful-dnd";
 
 const extToLangMap: { [key: string]: string } = {
   html: "html",
@@ -25,7 +30,7 @@ const Preview = ({
   screenType: string;
 }) => {
   const acceptedPreviewExtensions = ["html", "js", "jsx", "ts", "tsx"];
-  const currentPage = useSelector((state: any) => state.dashboard.currentPage);
+  const currentPage = useSelector((state: any) => state.page.currentPage);
   const [pageContent, setPageContent] = useState("");
   const [editor, setEditor] = useState<JSX.Element | null>(null);
   const leftPanelVisibility = useSelector(
@@ -94,7 +99,23 @@ const Preview = ({
               className={`dashboard__preview__screen ${screenType}`}
               id="screen"
               ref={screenRef}
-            />
+            >
+              <Droppable droppableId="droppable-preview" type="PREVIEW">
+                {(
+                  provided: DroppableProvided,
+                  snapshot: DroppableStateSnapshot,
+                ) => (
+                  <div
+                    {...provided.droppableProps}
+                    className={`dashboard__preview__screen__content ${screenType}`}
+                    id="screen-content"
+                    ref={provided.innerRef}
+                  >
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
           );
         }
         if (currentPage) return <>{editor}</>;

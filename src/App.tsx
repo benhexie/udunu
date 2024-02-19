@@ -10,6 +10,7 @@ import Assets from "./pages/dashboard/Panels/LeftPanel/Controls/Assets";
 import Database from "./pages/dashboard/Panels/LeftPanel/Controls/Database";
 import Settings from "./pages/dashboard/Panels/LeftPanel/Controls/Settinggs";
 import SetupOverlay from "./pages/projects/overlay/SetupOverlay";
+import ControlIndex from "./pages/dashboard/Panels/LeftPanel/Controls/ControlIndex";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/project/:id" element={<Dashboard />}>
             <Route index element={<Pages />} />
             <Route path="controls" element={<Controls />}>
+              <Route index element={<ControlIndex />} />
               <Route path="layers" element={<Layers />} />
               <Route path="assets" element={<Assets />} />
               <Route path="database" element={<Database />} />

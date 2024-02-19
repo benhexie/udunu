@@ -10,7 +10,7 @@ import {
   HiMiniMagnifyingGlassMinus,
 } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
-import { updateZoom, setScreenType } from "../../../../redux/action";
+import { updateZoom, setScreenType } from "../../../../redux/actions";
 import { useEffect } from "react";
 
 const TopNav = ({ screen }: { screen: HTMLDivElement | null }) => {

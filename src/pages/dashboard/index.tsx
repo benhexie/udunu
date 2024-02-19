@@ -1,16 +1,19 @@
 import "./Dashboard.css";
+import Preview from "./Preview";
 import LeftPanel from "./Panels/LeftPanel";
 import RightPanel from "./Panels/RightPanel";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import LeftNav from "./Navs/LeftNav";
 import TopNav from "./Navs/TopNav";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { updateZoom, setZoom, togglePanelsVisibility } from "../../redux/action";
-import Preview from "./Preview";
+import {
+  updateZoom,
+  setZoom,
+  togglePanelsVisibility,
+} from "../../redux/actions";
 
 const Dashboard = () => {
-  const [showPanels, setShowPanels] = useState(true);
   const screenRef = useRef<HTMLDivElement>(null);
   const screenType =
     useSelector((state: any) => state.dashboard.screenType) || "web";

@@ -4,7 +4,7 @@ import { IFlatMetadata } from "react-accessible-treeview/dist/TreeView/utils";
 import { FaRegFolderOpen, FaRegFolder } from "react-icons/fa6";
 import FileIcon from "./FileIcon";
 import { useDispatch } from "react-redux";
-import { setCurrentPage } from "../../../../../../redux/action";
+import { setCurrentPage } from "../../../../../../redux/actions";
 
 interface FileStructure {
   name: string;

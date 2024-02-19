@@ -47,3 +47,38 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+.dashboard__panel__section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #000;
+}
+
+.dashboard__panel__subheader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 8px;
+  background-color: #1f1f1f;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+.dashboard__panel__subheader__dropdown {
+  display: inherit;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dashboard__panel__section__content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+  gap: 8px;
+}

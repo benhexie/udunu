@@ -1,0 +1,9 @@
+.gizmo.container div {
+  width: 100%;
+  height: 100%;
+}
+
+.gizmo.section div {
+  width: 100%;
+  height: 50%;
+}
