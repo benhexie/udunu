@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use native_dialog::FileDialog;
+use std::fs::File;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -24,7 +25,10 @@ fn check_name_availability(folder: String, name: String) -> (bool, String) {
 
     let project_path = format!("{}/{}", folder, name);
 
-    return (false, "Project name is available".to_string());
+    match std::fs::read_dir(&project_path) {
+        Ok(_) => return (true, "Project name already exists".to_string()),
+        Err(_) => return (false, "Project name is available".to_string())
+    };
 }
 
 #[tauri::command]

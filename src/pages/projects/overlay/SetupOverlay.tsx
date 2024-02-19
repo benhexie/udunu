@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./SetupOverlay.css";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FaFolder } from "react-icons/fa6";
 import { MdOutlineWebAsset } from "react-icons/md";
 import { invoke } from "@tauri-apps/api";
@@ -10,6 +10,7 @@ const SetupOverlay = () => {
 	const framework = useParams().framework || "";
 	const [folder, setFolder] = useState<string | null>(null);
 	const [projectName, setProjectName] = useState<string>("");
+	const [projectNameError, setProjectNameError] = useState<string>("");
 	const availableFrameworks = [
 		"blank",
 		// "react",
@@ -32,6 +33,21 @@ const SetupOverlay = () => {
 		}
 		navigate(`/project/${projectName}`);
 	};
+
+	useEffect(() => {
+		if (!folder || !projectName) return;
+		(async () => {
+			const [error, message] = (await invoke("check_name_availability", {
+				folder,
+				name: projectName,
+			}) as [boolean, string]);
+			if (error) {
+				setProjectNameError(message);
+				return;
+			}
+			setProjectNameError("");
+		})()
+	}, [folder, projectName])
 
 	return (
 		<Fragment>
@@ -60,6 +76,13 @@ const SetupOverlay = () => {
 									onChange={(e) => setProjectName(e.target.value)}
 								/>
 							</label>
+							{projectNameError && <p
+								style={{
+									color: "red",
+									textAlign: "start",
+									fontSize: "1rem",
+								}}
+							>{projectNameError}</p>}
 							<button onClick={createProject}>Create</button>
 						</div>
 					</div>

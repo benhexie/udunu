@@ -7,9 +7,12 @@ import SvelteIcon from "../../assets/language-icons/svelte-icon.svg";
 import { FaGithub, FaUpload } from "react-icons/fa6";
 import { BiPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { invoke } from "@tauri-apps/api";
+import { useState } from "react";
 
 const Projects = () => {
   const navigate = useNavigate();
+  const [folder, setFolder] = useState<string>("");
 
   const frameworkClicked = (framework: string) => {
     navigate(`/projects/setup/${framework}`);
@@ -41,10 +44,12 @@ const Projects = () => {
         <div className="projects__actions__container projects__import__container">
           <h3>Import Local Project</h3>
           <div className="projects__import">
-            <label className="projects__import__label projects__import__label--local">
+            <label
+              className="projects__import__label projects__import__label--local"
+              onClick={async () => setFolder(await invoke("get_folder_path"))}
+            >
               <FaUpload />
-              <p>Drag and drop your project here</p>
-              <input type="file" />
+              <p>{folder ? folder : "Select Project"}</p>
             </label>
           </div>
           <h3>Import from Github</h3>
