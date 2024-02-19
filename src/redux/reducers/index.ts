@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { dashboardReducer } from "./dashboardReducer";
-import { currentPageReducer } from "./currentPageReducer";
+import { currentProjectReducer } from "./currentProjectReducer";
 
 export const rootReducer = combineReducers({
   dashboard: dashboardReducer,
-  page: currentPageReducer,
+  project: currentProjectReducer,
 });

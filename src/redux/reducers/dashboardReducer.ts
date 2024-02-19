@@ -1,4 +1,5 @@
-import { ActionInterface } from "./types/action";
+import { ActionInterface } from "../../types/action";
+import { FileStructure } from "../../types/dashboard";
 
 let zoomClickedOnce = false;
 

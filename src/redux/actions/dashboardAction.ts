@@ -19,13 +19,6 @@ export const updateZoom = (zoom: number) => {
   };
 };
 
-export const setCurrentPage = (page: string) => {
-  return {
-    type: "SET_CURRENT_PAGE",
-    payload: page,
-  };
-};
-
 export const setLeftPanelVisibility = (visibility: boolean) => {
   return {
     type: "SET_LEFT_PANEL_VISIBILITY",

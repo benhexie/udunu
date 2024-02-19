@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "path": "/home/benhexie/Documents/almin",
+  "isBranch": false,
+  "children": [
+    {
+      "isBranch": false,
+      "name": "package.json",
+      "path": "/home/benhexie/Documents/almin/package.json"
+    },
+    {
+      "isBranch": true,
+      "name": "node_modules",
+      "path": "/home/benhexie/Documents/almin/node_modules"
+    },
+    {
+      "isBranch": false,
+      "name": ".env",
+      "path": "/home/benhexie/Documents/almin/.env"
+    },
+    {
+      "isBranch": false,
+      "name": ".gitignore",
+      "path": "/home/benhexie/Documents/almin/.gitignore"
+    },
+    {
+      "isBranch": false,
+      "name": "yarn.lock",
+      "path": "/home/benhexie/Documents/almin/yarn.lock"
+    }
+  ]
+}

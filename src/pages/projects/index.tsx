@@ -8,15 +8,37 @@ import { FaGithub, FaUpload } from "react-icons/fa6";
 import { BiPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { invoke } from "@tauri-apps/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setFileTree, updateFileTree } from "../../redux/actions";
+import getFolderContent from "../../utils/getFolderContent";
+import { FolderItem } from "../../types/currentProject";
 
 const Projects = () => {
   const navigate = useNavigate();
   const [folder, setFolder] = useState<string>("");
+  const dispatch = useDispatch();
 
   const frameworkClicked = (framework: string) => {
     navigate(`/projects/setup/${framework}`);
   };
+
+  useEffect(() => {
+    if (folder) {
+      (async () => {
+        const data = (await getFolderContent(folder)) as FolderItem[];
+        const name = folder.split("/").pop() || "";
+        dispatch(
+          setFileTree({
+            name,
+            path: folder,
+            children: data,
+          }),
+        );
+        navigate(`/project/${name}`);
+      })();
+    }
+  }, [folder]);
 
   return (
     <div className="projects">

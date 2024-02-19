@@ -30,7 +30,7 @@ const Preview = ({
   screenType: string;
 }) => {
   const acceptedPreviewExtensions = ["html", "js", "jsx", "ts", "tsx"];
-  const currentPage = useSelector((state: any) => state.page.currentPage);
+  const currentPage = useSelector((state: any) => state.project.currentPage);
   const [pageContent, setPageContent] = useState("");
   const [editor, setEditor] = useState<JSX.Element | null>(null);
   const leftPanelVisibility = useSelector(

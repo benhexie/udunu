@@ -42,6 +42,7 @@ import { BsFiletypeXml } from "react-icons/bs";
 import { FaFile, FaVuejs } from "react-icons/fa6";
 import { RxTextAlignJustify } from "react-icons/rx";
 import { FunctionComponent } from "react";
+import { ImSvg } from "react-icons/im";
 
 const FileIcon: FunctionComponent<{ filename: string }> = ({ filename }) => {
   const extension = filename.slice(filename.lastIndexOf(".") + 1);
@@ -56,8 +57,6 @@ const FileIcon: FunctionComponent<{ filename: string }> = ({ filename }) => {
       return <IoLogoReact color="blue" className="icon" />;
     case "py":
       return <SiPython color="blue" className="icon" />;
-    case "java":
-      return <DiJava color="red" className="icon" />;
     case "cs":
       return <SiCsharp color="blue" className="icon" />;
     case "cpp":
@@ -78,54 +77,26 @@ const FileIcon: FunctionComponent<{ filename: string }> = ({ filename }) => {
     case "php7":
     case "php8":
       return <SiPhp color="purple" className="icon" />;
-    case "ts":
-      return <SiTypescript color="blue" className="icon" />;
-    case "docker":
-      return <SiDocker color="blue" className="icon" />;
-    case "image":
-      return <IoImageOutline color="grey" className="icon" />;
     case "json":
       return <SiJson color="grey" className="icon" />;
     case "xml":
       return <BsFiletypeXml color="grey" className="icon" />;
-    case "md":
-      return <SiMarkdown color="grey" className="icon" />;
     case "npmignore":
       return <SiNpm color="red" className="icon" />;
-    case "gitignore":
-      return <SiGit color="red" className="icon" />;
-    case "Dockerfile":
-      return <SiDocker color="blue" className="icon" />;
-    case "html":
-      return <IoLogoHtml5 color="orange" className="icon" />;
-    case "css":
-      return <IoLogoCss3 color="turquoise" className="icon" />;
-    case "js":
-      return <IoLogoJavascript color="yellow" className="icon" />;
-    case "jsx":
-      return <IoLogoReact color="blue" className="icon" />;
-    case "py":
-      return <SiPython color="blue" className="icon" />;
     case "java":
       return <DiJava color="red" className="icon" />;
-    case "cs":
-      return <SiCsharp color="blue" className="icon" />;
-    case "rb":
-      return <SiRuby color="red" className="icon" />;
-    case "swift":
-      return <SiSwift color="orange" className="icon" />;
-    case "go":
-      return <SiGo color="blue" className="icon" />;
     case "ts":
       return <SiTypescript color="blue" className="icon" />;
-    case "image":
+    case "png":
+    case "jpg":
+    case "jpeg":
+    case "gif":
+    case "bmp":
       return <IoImageOutline color="grey" className="icon" />;
-    case "json":
-      return <SiJson color="grey" className="icon" />;
+    case "svg":
+      return <ImSvg color="yellow" className="icon" />;
     case "md":
       return <SiMarkdown color="grey" className="icon" />;
-    case "npmignore":
-      return <SiNpm color="red" className="icon" />;
     case "gitignore":
       return <SiGit color="red" className="icon" />;
     case "docker":
