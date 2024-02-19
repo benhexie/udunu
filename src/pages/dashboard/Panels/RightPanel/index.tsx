@@ -1,10 +1,15 @@
 import { Fragment } from "react";
 import "../Panels.css";
+import "./RightPanel.css";
+import { useSelector } from "react-redux";
 
-const RightPanel = ({ showPanels }: { showPanels: boolean }) => {
+const RightPanel = () => {
+  const rightPanelVisibility = useSelector(
+    (state: any) => state.dashboard.settings.rightPanelVisibility,
+  );
   return (
     <Fragment>
-      {showPanels && <div className="dashboard__panel right"></div>}
+      {rightPanelVisibility && <div className="dashboard__panel right"></div>}
     </Fragment>
   );
 };

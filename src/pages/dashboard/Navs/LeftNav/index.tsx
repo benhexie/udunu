@@ -17,18 +17,18 @@ const LeftNav = () => {
     <nav className="dashboard__nav left">
       <ul>
         <li>
-          <NavLink to={"/projects"} end>
+          <NavLink to={"/project"} end>
             <img src="/logo.svg" alt="Udunu Logo" width={20} />
           </NavLink>
         </li>
         <li>
-          <NavLink to={{ pathname: `/projects/${id}/controls`, search }} end>
+          <NavLink to={{ pathname: `/project/${id}/controls`, search }} end>
             <BsFillPlusSquareFill />
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={{ pathname: `/projects/${id}/controls/layers`, search }}
+            to={{ pathname: `/project/${id}/controls/layers`, search }}
             end
           >
             <BsLayersFill />
@@ -36,7 +36,7 @@ const LeftNav = () => {
         </li>
         <li>
           <NavLink
-            to={{ pathname: `/projects/${id}/controls/assets`, search }}
+            to={{ pathname: `/project/${id}/controls/assets`, search }}
             end
           >
             <BsFillImageFill />
@@ -44,7 +44,7 @@ const LeftNav = () => {
         </li>
         <li>
           <NavLink
-            to={{ pathname: `/projects/${id}/controls/database`, search }}
+            to={{ pathname: `/project/${id}/controls/database`, search }}
             end
           >
             <BsDatabaseFill />
@@ -52,14 +52,14 @@ const LeftNav = () => {
         </li>
         <li>
           <NavLink
-            to={{ pathname: `/projects/${id}/controls/settings`, search }}
+            to={{ pathname: `/project/${id}/controls/settings`, search }}
             end
           >
             <BsGearFill />
           </NavLink>
         </li>
         <li className="exit">
-          <NavLink to={"/projects"} end>
+          <NavLink to={"/project"} end>
             <ImExit />
           </NavLink>
         </li>

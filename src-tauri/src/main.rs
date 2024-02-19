@@ -18,6 +18,16 @@ fn get_folder_path() -> String {
 }
 
 #[tauri::command]
+fn check_name_availability(folder: String, name: String) -> (bool, String) {
+    if folder.len() == 0 { return (true, "Project folder not provided".to_string()); }
+    if name.len() == 0 { return (true, "Project name not provided".to_string()); }
+
+    let project_path = format!("{}/{}", folder, name);
+
+    return (false, "Project name is available".to_string());
+}
+
+#[tauri::command]
 fn create_project(folder: String, name: String, mut framework: String) -> (bool, String) {
     if folder.len() == 0 { return (true, "Project folder not provided".to_string()); }
     if name.len() == 0 { return (true, "Project name not provided".to_string()); }
@@ -32,7 +42,7 @@ fn create_project(folder: String, name: String, mut framework: String) -> (bool,
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![get_folder_path, create_project])
+        .invoke_handler(tauri::generate_handler![get_folder_path, create_project, check_name_availability])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -1,0 +1,3 @@
+.dashboard__panel.left {
+  border-right: 1px solid var(--background-color-dark);
+}
