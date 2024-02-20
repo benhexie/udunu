@@ -1,4 +1,4 @@
-import { FolderItem } from "../../types/currentProject";
+import { FileStructure } from "../../types/currentProject";
 
 export const setCurrentPage = (page: string) => {
   return {
@@ -7,7 +7,7 @@ export const setCurrentPage = (page: string) => {
   };
 };
 
-export const setFileTree = (fileTree: FolderItem) => {
+export const setFileTree = (fileTree: FileStructure) => {
   return {
     type: "SET_FILE_TREE",
     payload: fileTree,
@@ -17,7 +17,7 @@ export const setFileTree = (fileTree: FolderItem) => {
 export const updateFileTree = (
   name: string,
   path: string,
-  children: FolderItem[],
+  children: FileStructure[],
 ) => {
   return {
     type: "UPDATE_FILE_TREE",
@@ -28,3 +28,10 @@ export const updateFileTree = (
     },
   };
 };
+
+export const updateFetchedPaths = (path: string) => {
+  return {
+    type: "UPDATE_FETCHED_PATHS",
+    payload: path,
+  };
+}

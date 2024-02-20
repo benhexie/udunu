@@ -10,9 +10,9 @@ import { Link } from "react-router-dom";
 import { invoke } from "@tauri-apps/api";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setFileTree, updateFileTree } from "../../redux/actions";
+import { setFileTree } from "../../redux/actions";
 import getFolderContent from "../../utils/getFolderContent";
-import { FolderItem } from "../../types/currentProject";
+import { FileStructure } from "../../types/currentProject";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -26,12 +26,14 @@ const Projects = () => {
   useEffect(() => {
     if (folder) {
       (async () => {
-        const data = (await getFolderContent(folder)) as FolderItem[];
+        const data = (await getFolderContent(folder)) as FileStructure[];
         const name = folder.split("/").pop() || "";
         dispatch(
           setFileTree({
             name,
-            path: folder,
+            metadata: {
+              path: folder
+            },
             children: data,
           }),
         );

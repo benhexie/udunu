@@ -1,17 +1,21 @@
 import { ActionInterface } from "../../types/action";
-import { FileStructure } from "../../types/dashboard";
+import { FileStructure } from "../../types/currentProject";
 
 interface InitalState {
   currentPage: string;
   layout: any[];
   fileTree: FileStructure;
+  fetchedPaths: string[];
 }
 
 const initialState: InitalState = {
   currentPage: "",
   layout: [],
+  fetchedPaths: [],
   fileTree: {
-    path: "",
+    metadata: {
+      path: "",
+    },
     name: "",
     children: [],
     isBranch: true,
@@ -48,7 +52,7 @@ export const currentProjectReducer = (
       return (() => {
         const { name, path, children } = action.payload;
 
-        const fileTree = { ...state.fileTree };
+        const fileTree = JSON.parse(JSON.stringify(state.fileTree));
         fileTreeUpdate(fileTree, name, path, sortChildren(children));
 
         return {
@@ -56,6 +60,13 @@ export const currentProjectReducer = (
           fileTree,
         };
       })();
+
+    case "UPDATE_FETCHED_PATHS":
+      return {
+        ...state,
+        fetchedPaths: [...state.fetchedPaths, action.payload],
+      };
+      
 
     default:
       return state;
@@ -68,7 +79,8 @@ const fileTreeUpdate = (
   path: string,
   children: FileStructure[],
 ) => {
-  const pathArray = path.split("/").filter((p) => p);
+  const refinedPath = path.replace(fileTree.metadata.path, "");
+  const pathArray = refinedPath.split("/").filter((p) => p);
 
   const updateFileTree = (node: FileStructure, pathIndex: number) => {
     const currentFolder = pathArray[pathIndex];
@@ -78,7 +90,7 @@ const fileTreeUpdate = (
     }
     if (pathIndex === pathArray.length - 1) {
       child.name = name;
-      child.path = path;
+      child.metadata.path = path;
       child.children = children; // Set children at the last path element
       return;
     }

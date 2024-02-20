@@ -1,6 +1,8 @@
-export interface FolderItem {
+export interface FileStructure {
   name: string;
-  path: string;
-  children?: FolderItem[];
+  metadata: {
+    path: string;
+  };
+  children?: FileStructure[] | [];
   isBranch?: boolean;
 }

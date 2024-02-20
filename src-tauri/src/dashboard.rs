@@ -1,11 +1,13 @@
 use std::fs;
 use serde::Serialize;
+use serde_json::Map;
+use std::collections::HashMap;
 
 #[derive(Serialize)]
 #[allow(non_snake_case)]
 pub struct FolderItem {
     name: String,
-    path: String,
+    metadata: HashMap<String, String>,
     isBranch: bool,
 }
 
@@ -20,9 +22,11 @@ pub fn get_folder_content(path: String) -> Vec<FolderItem> {
                 let path_buf = entry.path();
                 let is_branch = path_buf.is_dir();
                 let path = path_buf.to_string_lossy().into_owned();
+                let mut metadata = HashMap::new();
+                metadata.insert("path".to_string(), path);
                 let item = FolderItem {
                     name,
-                    path,
+                    metadata,
                     isBranch: is_branch,
                 };
                 items.push(item);
