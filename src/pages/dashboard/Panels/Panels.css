@@ -1,3 +1,11 @@
+.panel__wrapper {
+  overflow-y: auto;
+  height: calc(100vh - var(--nav-height));
+  height: calc(100dvh - var(--nav-height));
+  position: relative;
+  display: flex;
+}
+
 .dashboard__panel {
   width: 220px;
   display: flex;
@@ -13,6 +21,12 @@
   background-color: #1f1f1f;
   border-bottom: 1px solid #000;
   font-size: 14px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  min-height: 40px;
+  height: 40px;
 }
 
 .dashboard__panel__header a {
@@ -65,6 +79,9 @@
   background-color: #1f1f1f;
   font-size: 12px;
   color: #a3a3a3;
+  position: sticky;
+  top: 40px;
+  z-index: 1;
 }
 
 .dashboard__panel__subheader__dropdown {

@@ -6,3 +6,9 @@ export interface FileStructure {
   children?: FileStructure[] | [];
   isBranch?: boolean;
 }
+
+export interface assetInterface {
+  name: string;
+  path: string;
+  type: string;
+}

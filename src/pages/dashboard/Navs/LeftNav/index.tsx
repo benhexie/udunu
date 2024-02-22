@@ -42,7 +42,7 @@ const LeftNav = () => {
             <BsFillImageFill />
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to={{ pathname: `/project/${id}/controls/database`, search }}
             end
@@ -57,7 +57,7 @@ const LeftNav = () => {
           >
             <BsGearFill />
           </NavLink>
-        </li>
+        </li> */}
         <li className="exit">
           <NavLink to={"/project"} end>
             <ImExit />

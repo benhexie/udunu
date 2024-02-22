@@ -4,4 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["yarn", "tauri", "dev"]
+CMD if [ "$NODE_ENV" = "production" ]; \
+    then \
+        yarn tauri build; \
+    else \
+        yarn tauri dev; \
+    fi

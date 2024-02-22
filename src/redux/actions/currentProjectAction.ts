@@ -12,7 +12,7 @@ export const setFileTree = (fileTree: FileStructure) => {
     type: "SET_FILE_TREE",
     payload: fileTree,
   };
-}
+};
 
 export const updateFileTree = (
   name: string,
@@ -34,4 +34,11 @@ export const updateFetchedPaths = (path: string) => {
     type: "UPDATE_FETCHED_PATHS",
     payload: path,
   };
-}
+};
+
+export const updateImportedAssets = (assets: string[]) => {
+  return {
+    type: "UPDATE_IMPORTED_ASSETS",
+    payload: assets,
+  };
+};

@@ -19,7 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Intro />} />
           <Route path="/projects" element={<Projects />}>
-            <Route path="setup/:framework" element={<SetupOverlay />} />
+            <Route path="setup" element={<SetupOverlay />}>
+              <Route path=":framework" />
+              <Route path={`github/:url`} />
+            </Route>
           </Route>
           <Route path="/project/:id" element={<Dashboard />}>
             <Route index element={<Pages />} />

@@ -12,7 +12,6 @@ import {
   setZoom,
   togglePanelsVisibility,
 } from "../../redux/actions";
-import { invoke } from "@tauri-apps/api";
 
 const Dashboard = () => {
   const screenRef = useRef<HTMLDivElement>(null);

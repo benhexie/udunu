@@ -7,3 +7,22 @@
   width: 100%;
   height: 50%;
 }
+
+.gizmo.row div {
+  width: 50%;
+  height: 100%;
+}
+
+.gizmo.column {
+  flex-direction: column;
+}
+
+.gizmo.column div {
+  width: 100%;
+  height: 50%;
+}
+
+.gizmo.grid {
+  display: grid;
+  grid-template-areas: "a b" "c d";
+}

@@ -17,6 +17,7 @@ import { FileStructure } from "../../types/currentProject";
 const Projects = () => {
   const navigate = useNavigate();
   const [folder, setFolder] = useState<string>("");
+  const [gitURL, setGitURL] = useState<string>("");
   const dispatch = useDispatch();
 
   const frameworkClicked = (framework: string) => {
@@ -32,7 +33,7 @@ const Projects = () => {
           setFileTree({
             name,
             metadata: {
-              path: folder
+              path: folder,
             },
             children: data,
           }),
@@ -80,9 +81,22 @@ const Projects = () => {
           <div className="projects__import">
             <label className="projects__import__label projects__import__label--url">
               <FaGithub />
-              <input type="text" placeholder="Enter Git URL" />
+              <input
+                type="text"
+                placeholder="Enter Git URL"
+                value={gitURL}
+                onChange={(e) => setGitURL(e.target.value)}
+              />
             </label>
-            <button>Import</button>
+            <button
+              onClick={() => {
+                navigate(
+                  `/projects/setup/github/${encodeURIComponent(gitURL)}`,
+                );
+              }}
+            >
+              Import
+            </button>
           </div>
         </div>
         <div className="projects__actions__container projects__frameworks__container">

@@ -1,6 +1,6 @@
 .dashboard__nav.top {
   flex-direction: row;
-  height: 36px;
+  height: var(--nav-height);
   border-bottom-width: 1px;
 }
 

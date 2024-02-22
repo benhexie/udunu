@@ -9,6 +9,8 @@
   padding: 2px;
   transition: all 0.5s ease;
   background-color: inherit;
+  gap: 2px;
+  position: relative;
 }
 
 .gizmo:not(.disabled):hover {
@@ -23,6 +25,37 @@
   opacity: 0.5;
 }
 
-.gizmo div {
+.gizmo div:not(:is(.icon)) {
   border: 2px dashed var(--primary-color);
+}
+
+.gizmo .icon {
+  width: 60%;
+  height: 60%;
+  margin: 20% 20%;
+  color: var(--primary-color);
+}
+
+.gizmo__wrapper {
+  position: relative;
+}
+
+.gizmo__wrapper span {
+  pointer-events: none;
+  font-size: 0.8rem;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s ease;
+  background-color: var(--background-color-dark);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.gizmo__wrapper:hover span {
+  opacity: 1;
 }

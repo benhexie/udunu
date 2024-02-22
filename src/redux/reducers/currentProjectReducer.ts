@@ -1,17 +1,17 @@
 import { ActionInterface } from "../../types/action";
-import { FileStructure } from "../../types/currentProject";
+import { FileStructure, assetInterface } from "../../types/currentProject";
 
 interface InitalState {
   currentPage: string;
   layout: any[];
   fileTree: FileStructure;
   fetchedPaths: string[];
+  assets?: assetInterface[];
 }
 
 const initialState: InitalState = {
   currentPage: "",
   layout: [],
-  fetchedPaths: [],
   fileTree: {
     metadata: {
       path: "",
@@ -20,6 +20,8 @@ const initialState: InitalState = {
     children: [],
     isBranch: true,
   },
+  fetchedPaths: [],
+  assets: [],
 };
 
 export const currentProjectReducer = (
@@ -45,7 +47,7 @@ export const currentProjectReducer = (
         fileTree: {
           ...action.payload,
           children: sortChildren(action.payload.children || []),
-        }
+        },
       };
 
     case "UPDATE_FILE_TREE":
@@ -66,7 +68,12 @@ export const currentProjectReducer = (
         ...state,
         fetchedPaths: [...state.fetchedPaths, action.payload],
       };
-      
+
+    case "UPDATE_IMPORTED_ASSETS":
+      return {
+        ...state,
+        assets: state.assets?.concat(action.payload),
+      };
 
     default:
       return state;
@@ -115,4 +122,4 @@ const sortChildren = (children: FileStructure[]): FileStructure[] => {
       else return a.name.localeCompare(b.name);
     }
   });
-}
+};

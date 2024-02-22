@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import "../Panels.css";
 import "./LeftPanel.css";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
@@ -11,7 +10,7 @@ const LeftPanel = () => {
   const { search } = useLocation();
   const { id } = useParams();
   return (
-    <Fragment>
+    <div className="panel__wrapper">
       {leftPanelVisibility && (
         <div className="dashboard__panel left">
           <header className="dashboard__panel__header dashboard__panel__nav">
@@ -25,7 +24,7 @@ const LeftPanel = () => {
           <Outlet />
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 
