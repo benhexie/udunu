@@ -11,6 +11,9 @@ import Database from "./pages/dashboard/Panels/LeftPanel/Controls/Database";
 import Settings from "./pages/dashboard/Panels/LeftPanel/Controls/Settinggs";
 import SetupOverlay from "./pages/projects/overlay/SetupOverlay";
 import ControlIndex from "./pages/dashboard/Panels/LeftPanel/Controls/ControlIndex";
+import Legal from "./pages/legals/Legal";
+import Tac from "./pages/legals/Tac";
+import Privacy from "./pages/legals/Privacy";
 
 function App() {
   return (
@@ -33,6 +36,10 @@ function App() {
               <Route path="database" element={<Database />} />
               <Route path="settings" element={<Settings />} />
             </Route>
+          </Route>
+          <Route path="/legal" element={<Legal />}>
+            <Route path="terms" element={<Tac />} />
+            <Route path="privacy" element={<Privacy />} />
           </Route>
           <Route path="*" element={<Projects />} />
         </Routes>

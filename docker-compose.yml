@@ -5,7 +5,9 @@ services:
     container_name: udunu_app_container
     volumes:
       - .:/app
+      - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       - NODE_ENV=${NODE_ENV}
+      - DISPLAY=${DISPLAY}
     ports:
       - "1420:1420"

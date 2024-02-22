@@ -1,6 +1,8 @@
 use std::fs;
 use std::process::Command;
 use native_dialog::FileDialog;
+use serde::Serialize;
+use tauri::api::dialog;
 
 #[tauri::command]
 pub fn get_folder_path() -> String {    
@@ -58,5 +60,40 @@ pub fn clone_remote_repo(remote_url: String, local_url: String, username: Option
     match output {
         Ok(_) => (false, "Repository successfully cloned".to_string()),
         Err(e) => (true, format!("Error: {}", e)),
+    }
+}
+
+#[derive(Serialize)]
+struct Asset {
+    name: String,
+    path: String,
+    #[serde(rename = "type")]
+    file_type: String,
+}
+
+#[tauri::command]
+pub fn get_assets() -> (bool, String, Vec<Asset>) {
+    let result = dialog::open_file().unwrap();
+    match result {
+        Some(paths) => {
+            let mut assets: Vec<Asset> = Vec::new();
+            for path in paths {
+                if let Some(file_name) = path.file_name() {
+                    if let Some(name) = file_name.to_str() {
+                        if let Some(extension) = path.extension() {
+                            if let Some(file_type) = extension.to_str() {
+                                assets.push(Asset {
+                                    name: name.to_string(),
+                                    path: path.to_str().unwrap().to_string(),
+                                    file_type: file_type.to_string(),
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            (false, "".to_string(), assets)
+        }
+        None => (true, "No assets selected".to_string(), Vec::new()),
     }
 }

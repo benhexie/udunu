@@ -158,10 +158,10 @@ const Projects = () => {
       </div>
       <footer className="projects__footer">
         <p>
-          <Link to="">Terms of Service</Link>
+          <Link to="/legal/terms">Terms of Service</Link>
         </p>
         <p>
-          <Link to="">Privacy Policy</Link>
+          <Link to="/legal/privacy">Privacy Policy</Link>
         </p>
         <p>
           <Link to="/">Help</Link>

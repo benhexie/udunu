@@ -36,14 +36,14 @@ const Intro = () => {
         <h4>Contributors:</h4>
         <p>
           By clicking the button below, you agree to our{" "}
-          <Link to={""}>terms of service</Link> and{" "}
-          <Link to={""}>privacy policy</Link>.
+          <Link to={"/legal/terms"}>terms of service</Link> and{" "}
+          <Link to={"/legal/privacy"}>privacy policy</Link>.
         </p>
         <button onClick={handleContinue}>Continue</button>
         <footer>
           <small>
-            <Link to={""}>Terms and Conditions</Link>
-            <Link to={""}>Privacy Policy</Link>
+            <Link to={"/legal/terms"}>Terms and Conditions</Link>
+            <Link to={"/legal/privacy"}>Privacy Policy</Link>
           </small>
         </footer>
       </div>

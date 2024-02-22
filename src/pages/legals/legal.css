@@ -1,0 +1,39 @@
+.legal {
+  padding: 20px;
+  text-align: justify;
+}
+
+.legal button {
+  background-color: #f8f8f8;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.legal button:hover {
+  background-color: #e0e0e0;
+}
+
+.legal button svg {
+  margin-right: 5px;
+}
+
+.legal footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  color: #000;
+}
+
+.legal footer small {
+  display: flex;
+  justify-content: space-around;
+}

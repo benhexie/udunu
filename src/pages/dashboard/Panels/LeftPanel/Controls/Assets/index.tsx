@@ -6,6 +6,11 @@ const Assets = () => {
   const assets = useSelector((state: any) => state.project.assets);
   return (
     <Fragment>
+      <div className="dashboard__panel__section assets">
+        <button className="dashboard__panel__section__button">
+          Import Assets
+        </button>
+      </div>
       {assets.length > 0 ? (
         <div className="dashboard__panel__section">
           {assets.map((asset: assetInterface, index: number) => (
@@ -38,8 +43,9 @@ const Assets = () => {
             </div>
           ))}
         </div>
-      ) : null}
-      <div className="dashboard__panel__section"></div>
+      ) : (
+        <p>No asset has been added</p>
+      )}
     </Fragment>
   );
 };
