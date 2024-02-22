@@ -1,3 +1,4 @@
+import { DropResult } from "react-beautiful-dnd";
 import { ActionInterface } from "../../types/action";
 import { FileStructure, assetInterface } from "../../types/currentProject";
 
@@ -7,6 +8,8 @@ interface InitalState {
   fileTree: FileStructure;
   fetchedPaths: string[];
   assets?: assetInterface[];
+  droppedGizmo?: DropResult;
+  gizmoLayout: string[];
 }
 
 const initialState: InitalState = {
@@ -22,6 +25,8 @@ const initialState: InitalState = {
   },
   fetchedPaths: [],
   assets: [],
+  droppedGizmo: undefined,
+  gizmoLayout: [],
 };
 
 export const currentProjectReducer = (
@@ -43,7 +48,7 @@ export const currentProjectReducer = (
 
     case "SET_FILE_TREE":
       return {
-        ...state,
+        ...initialState,
         fileTree: {
           ...action.payload,
           children: sortChildren(action.payload.children || []),
@@ -74,6 +79,15 @@ export const currentProjectReducer = (
         ...state,
         assets: state.assets?.concat(action.payload),
       };
+
+    case "DROPPED_GIZMO":
+      return {
+        ...state,
+        droppedGizmo: action.payload,
+      };
+
+    case "UPDATE_GIZMO_LAYOUT":
+      return updateGizmoLayout(state, action.payload);
 
     default:
       return state;
@@ -123,3 +137,10 @@ const sortChildren = (children: FileStructure[]): FileStructure[] => {
     }
   });
 };
+
+const updateGizmoLayout = (state: InitalState, layout: string): InitalState => {
+  return {
+    ...state,
+    gizmoLayout: [...state.layout, layout]
+  }
+}

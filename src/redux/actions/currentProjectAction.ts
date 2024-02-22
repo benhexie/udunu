@@ -1,4 +1,5 @@
-import { FileStructure } from "../../types/currentProject";
+import { DropResult } from "react-beautiful-dnd";
+import { FileStructure, assetInterface } from "../../types/currentProject";
 
 export const setCurrentPage = (page: string) => {
   return {
@@ -36,9 +37,23 @@ export const updateFetchedPaths = (path: string) => {
   };
 };
 
-export const updateImportedAssets = (assets: string[]) => {
+export const updateImportedAssets = (assets: assetInterface[]) => {
   return {
     type: "UPDATE_IMPORTED_ASSETS",
     payload: assets,
   };
 };
+
+export const droppedGizmo = (gizmo: DropResult) => {
+  return {
+    type: "DROPPED_GIZMO",
+    payload: gizmo,
+  };
+}
+
+export const updateGizmoLayout = (layout: string) => {
+  return {
+    type: "UPDATE_GIZMO_LAYOUT",
+    payload: layout,
+  };
+}

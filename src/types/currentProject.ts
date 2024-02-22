@@ -10,5 +10,5 @@ export interface FileStructure {
 export interface assetInterface {
   name: string;
   path: string;
-  type: string;
+  fileType: string;
 }

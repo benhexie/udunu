@@ -3,10 +3,14 @@ import { useSelector } from "react-redux";
 import { LegacyRef, useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 import {
+  DropResult,
   Droppable,
   DroppableProvided,
   DroppableStateSnapshot,
 } from "react-beautiful-dnd";
+import { invoke } from "@tauri-apps/api";
+import { updateGizmoLayout } from "../../../redux/actions";
+import { useDispatch } from "react-redux";
 
 const extToLangMap: { [key: string]: string } = {
   html: "html",
@@ -39,12 +43,42 @@ const Preview = ({
   const rightPanelVisibility = useSelector(
     (state: any) => state.dashboard.settings.rightPanelVisibility,
   );
+  const [prevPageContent, setPrevPageContent] = useState("");
+  const droppedGizmo = useSelector(
+    (state: any) => state.project.droppedGizmo,
+  ) as DropResult;
+  const gizmoLayout = useSelector(
+    (state: any) => state.project.gizmoLayout,
+  ) as string[];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!droppedGizmo) return;
+    dispatch(updateGizmoLayout(droppedGizmo.draggableId));
+  }, [droppedGizmo]);
 
   useEffect(() => {
     if (currentPage) {
       setEditor(getEditor());
     }
   }, [currentPage]);
+
+  useEffect(() => {
+    (async () => {
+      if (currentPage && prevPageContent === pageContent) {
+        try {
+          const content = (await invoke("read_file", {
+            filePath: currentPage,
+          })) as string;
+          setPageContent(content);
+          setPrevPageContent(content);
+          refreshEditor();
+        } catch (error: any) {
+          console.error(error);
+        }
+      }
+    })();
+  }, [currentPage, pageContent]);
 
   function getEditor(pageChanged = true) {
     return (
@@ -77,7 +111,9 @@ const Preview = ({
 
   function refreshEditor() {
     setEditor(<></>);
-    setTimeout(() => setEditor(getEditor(false)), 0);
+    setTimeout(() => {
+      setEditor(getEditor(false));
+    }, 0);
   }
 
   useEffect(() => {
@@ -100,6 +136,67 @@ const Preview = ({
               id="screen"
               ref={screenRef}
             >
+              <div className="dashboard__preview__screen_webpage">
+                {gizmoLayout.map((gizmo, index) => {
+                  if (gizmo === "container-gizmo") {
+                    return (
+                      <div
+                        key={index}
+                        className="container-gizmo"
+                        style={{
+                          width: "200px",
+                          height: "200px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                          backgroundColor: "blue",
+                        }}
+                      ></div>
+                    );
+                  }
+                  if (gizmo === "text-gizmo") {
+                    return (
+                      <p
+                        key={index}
+                        className="text-gizmo"
+                        style={{ color: "black" }}
+                      >
+                        Text
+                      </p>
+                    );
+                  }
+                  if (gizmo === "heading-gizmo") {
+                    return (
+                      <h1
+                        key={index}
+                        className="heading-gizmo"
+                        style={{ color: "black" }}
+                      >
+                        Heading
+                      </h1>
+                    );
+                  }
+                  if (gizmo === "image-gizmo") {
+                    return (
+                      <img
+                        key={index}
+                        className="image-gizmo"
+                        src="https://via.placeholder.com/150"
+                        alt="Placeholder"
+                      />
+                    );
+                  }
+                  if (gizmo === "button-gizmo") {
+                    return (
+                      <button key={index} className="button-gizmo">
+                        Button
+                      </button>
+                    );
+                  }
+                  return <></>;
+                })}
+              </div>
               <Droppable droppableId="droppable-preview" type="PREVIEW">
                 {(
                   provided: DroppableProvided,

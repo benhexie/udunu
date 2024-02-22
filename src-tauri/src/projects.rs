@@ -2,7 +2,6 @@ use std::fs;
 use std::process::Command;
 use native_dialog::FileDialog;
 use serde::Serialize;
-use tauri::api::dialog;
 
 #[tauri::command]
 pub fn get_folder_path() -> String {    
@@ -63,37 +62,47 @@ pub fn clone_remote_repo(remote_url: String, local_url: String, username: Option
     }
 }
 
+#[allow(non_snake_case)]
 #[derive(Serialize)]
-struct Asset {
+pub struct Asset {
     name: String,
     path: String,
-    #[serde(rename = "type")]
-    file_type: String,
+    fileType: String,
 }
 
 #[tauri::command]
 pub fn get_assets() -> (bool, String, Vec<Asset>) {
-    let result = dialog::open_file().unwrap();
+    let result = FileDialog::new().show_open_single_file();
+
     match result {
-        Some(paths) => {
-            let mut assets: Vec<Asset> = Vec::new();
-            for path in paths {
-                if let Some(file_name) = path.file_name() {
-                    if let Some(name) = file_name.to_str() {
-                        if let Some(extension) = path.extension() {
-                            if let Some(file_type) = extension.to_str() {
-                                assets.push(Asset {
-                                    name: name.to_string(),
-                                    path: path.to_str().unwrap().to_string(),
-                                    file_type: file_type.to_string(),
-                                });
-                            }
-                        }
-                    }
-                }
-            }
-            (false, "".to_string(), assets)
+        Ok(Some(path)) => {
+            let name = path.file_name().unwrap().to_str().unwrap().to_string();
+            let extension = path.extension().map_or("", |ext| ext.to_str().unwrap_or(""));
+            let asset_type = match extension {
+                "jpg" | "jpeg" | "png" | "gif" => "image",
+                "mp4" | "mov" | "avi" | "mkv" => "video",
+                "mp3" | "wav" | "flac" | "ogg" => "audio",
+                _ => "file",
+            };
+            let asset = Asset {
+                name: name.clone(),
+                path: path.to_str().unwrap().to_string(),
+                fileType: asset_type.to_string(),
+            };
+            (false, "".to_string(), vec![asset])
         }
-        None => (true, "No assets selected".to_string(), Vec::new()),
+        Ok(None) => (true, "No asset selected".to_string(), Vec::new()),
+        Err(e) => (true, format!("Error: {}", e), Vec::new()),
+    }
+}
+
+#[tauri::command]
+pub fn read_file(file_path: String) -> Result<String, String> {
+    match fs::read(&file_path) {
+        Ok(bytes) => match String::from_utf8(bytes) {
+            Ok(content) => Ok(content),
+            Err(_) => Err("Error: File content is not valid UTF-8".to_string()),
+        },
+        Err(err) => Err(format!("Error reading file: {}", err)),
     }
 }

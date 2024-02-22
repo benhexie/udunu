@@ -1,9 +1,5 @@
-const Text = ({ text, fontSize }: { text: string, fontSize: number }) => {
-  return (
-    <div>
-      <p style={{ fontSize }}>{text}</p>
-    </div>
-  );
+const Text = () => {
+  return <p>Write here...</p>;
 };
 
 export default Text;
